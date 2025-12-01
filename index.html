@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hailee Booth – Wix Animation Demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hailee Booth – Wix Animation Research Demo</title>
 
     <style>
         body {
             margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: Arial, sans-serif;
             background: #0a0a0a;
             color: white;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         header {
-            padding: 20px;
             text-align: center;
             background: #111;
-            font-size: 1.8rem;
+            padding: 25px;
+            font-size: 2rem;
             font-weight: bold;
         }
 
@@ -26,35 +26,35 @@
             width: 90%;
             max-width: 900px;
             margin: auto;
-            padding: 50px 0;
+            padding: 40px 0;
             text-align: center;
         }
 
-        /* continuous CSS animation */
-        .moving-circle {
-            width: 120px;
-            height: 120px;
+        /* Animation #1 – Continuous floating animation */
+        .float-box {
+            width: 140px;
+            height: 140px;
+            background: linear-gradient(45deg, #ff0066, #ffcc00);
+            border-radius: 20px;
             margin: 40px auto;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #ff005d, #ffaa00);
-            box-shadow: 0 0 25px #ff005d;
             animation: float 3s ease-in-out infinite alternate;
+            box-shadow: 0 0 20px #ff0066;
         }
 
         @keyframes float {
             from { transform: translateX(0); }
-            to { transform: translateX(150px); }
+            to { transform: translateX(180px); }
         }
 
-        /* scroll fade animation */
-        .fade-box {
-            margin: 60px 0;
-            padding: 40px;
-            background: #1a1a1a;
-            border-radius: 15px;
+        /* Animation #2 – Scroll fade using JS */
+        .fade-section {
             opacity: 0;
             transform: translateY(40px);
-            transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+            background: #1a1a1a;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 50px 0;
+            transition: opacity 1.3s ease-out, transform 1.3s ease-out;
         }
 
         .visible {
@@ -62,75 +62,73 @@
             transform: translateY(0);
         }
 
+        a { color: #66d1ff; }
+
         footer {
             text-align: center;
             padding: 40px;
-            color: #ccc;
-        }
-
-        a {
-            color: #66d1ff;
+            color: #aaa;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        Hailee Booth – Web Animation Demo Using Wix
-    </header>
+<header>
+    Hailee Booth – Web Animation Demo Using Wix
+</header>
 
-    <div class="container">
+<div class="container">
 
-        <h2>Continuous Animation</h2>
-        <p>This circle uses a CSS keyframe animation.</p>
+    <h2>1. Continuous Animation</h2>
+    <p>This box demonstrates a continuous looping animation.</p>
+    <div class="float-box"></div>
 
-        <div class="moving-circle"></div>
+    <h2>2. Scroll-Triggered Animation</h2>
+    <p>Scroll down to see sections fade in.</p>
 
-        <h2>Scroll-Triggered Animations</h2>
-        <p>Scroll down to see boxes fade in.</p>
-
-        <div class="fade-box">
-            <h3>Animation Box #1</h3>
-            <p>This box fades in when scrolled into view.</p>
-        </div>
-
-        <div class="fade-box">
-            <h3>Animation Box #2</h3>
-            <p>Another fade-in animation appears here.</p>
-        </div>
-
-        <h2>Tool Used: Wix</h2>
-        <p>
-            <a href="https://www.wix.com" target="_blank">Visit Wix Website</a>
-        </p>
-
-        <h2>My Opinion</h2>
-        <p>
-            Wix is a useful website builder for creating pages quickly with drag-and-drop tools.
-            It makes animations easy because many effects are built in using its Editor. 
-            The only difficulty is that advanced JavaScript animations require the Dev Mode feature,
-            and the free plan has limitations, but for basic animations it is simple and beginner-friendly.
-        </p>
+    <div class="fade-section">
+        <h3>Fade Animation #1</h3>
+        <p>This section fades upward into view as you scroll.</p>
     </div>
 
-    <footer>
-        © 2025 – Animation Demo by Hailee Booth
-    </footer>
+    <div class="fade-section">
+        <h3>Fade Animation #2</h3>
+        <p>Another fade-in section to show two unique animations.</p>
+    </div>
 
-    <script>
-        /* fade-in on scroll using JS */
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        });
+    <h2>Tool Used: Wix</h2>
+    <p>
+        <a href="https://www.wix.com" target="_blank">Visit Wix.com</a>
+    </p>
 
-        document.querySelectorAll('.fade-box').forEach(box => {
-            observer.observe(box);
+    <h2>My Opinion on Wix</h2>
+    <p>
+        Wix is useful for beginners because it allows easy drag-and-drop animations without needing code.  
+        The interface is friendly and offers built-in transitions, scrolling effects, and movement animations.  
+        The hardest part is that more advanced JavaScript animations require enabling Wix Velo, which can be confusing,
+        but for basic animations Wix is simple and effective.
+    </p>
+
+</div>
+
+<footer>
+    © 2025 – Animation Demonstration by Hailee Booth
+</footer>
+
+<script>
+    // Scroll fade animation logic
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+            }
         });
-    </script>
+    });
+
+    document.querySelectorAll(".fade-section").forEach(section => {
+        observer.observe(section);
+    });
+</script>
 
 </body>
 </html>
